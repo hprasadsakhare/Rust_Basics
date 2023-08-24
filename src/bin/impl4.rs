@@ -1,0 +1,57 @@
+enum Color {
+    Brown,
+    Red,
+}
+
+impl Color{
+    fn print(&self){
+        match self{
+            Color::Brown => println!("brown"),
+            Color::Red => println!("red"),
+        }
+    }
+}
+
+struct Dimensions{
+    weidth: f64,
+    height: f64,
+    depth: f64,
+}
+
+impl Dimensions{
+    fn print(&self){
+        println!("weidth: {:?}", self.weidth);
+        println!("height: {:?}", self.height);
+        println!("depth: {:?}", self.depth);
+    }
+}
+
+struct ShippingBox{
+    color: Color,
+    weight: f64,
+    dimensions: Dimensions,
+}
+
+
+impl ShippingBox{
+    fn new(weight:f64,color:Color,dimensions:Dimensions) -> Self{
+        Self { color,
+               weight,
+               dimensions,
+            }
+    }
+    fn print(&self){
+        self.color.print();
+        self.dimensions.print();
+        println!("weight: {:?}", self.weight);
+    }
+}
+fn main(){
+    let small_dimensions = Dimensions{
+        weidth: 1.0,
+        height: 2.0,
+        depth: 3.0,
+    };
+    let small_box = ShippingBox::new(5.0,Color::Red,small_dimensions);
+    small_box.print();
+}
